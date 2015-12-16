@@ -76,6 +76,13 @@ primary key(id_atributo),
 foreign key(id_tipo_valor) references tipo_valor(id_tipo),
 foreign key(id_tipo_unidad) references tipo_unidad(id_tipo));
 
+create table categoria_atributo(
+id_categoria int,
+id_atributo int,
+id_tipo_unidad int,
+primary key(id_categoria,id_atributo),
+foreign key(id_categoria) references categoria(id_categoria),
+foreign key(id_atributo) references atributo(id_atributo));
 create table producto_atributo(
 id_categoria int,
 id_producto int,
@@ -85,20 +92,4 @@ primary key(id_categoria,id_producto,id_atributo),
 foreign key(id_categoria) references categoria_producto(id_categoria),
 foreign key(id_producto) references  categoria_producto(id_producto),
 foreign key(id_atributo) references  categoria_atributo(id_atributo));
-
-create table categoria_atributo(
-id_categoria int,
-id_atributo int,
-id_tipo_unidad int,
-primary key(id_categoria,id_atributo),
-foreign key(id_categoria) references categoria(id_categoria),
-foreign key(id_atributo) references atributo(id_atributo));
-
-
-
-
-
-
-
-
 
