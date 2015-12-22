@@ -1,7 +1,7 @@
-create database distribuidos;
+
 use distribuidos;
 create table producto(
-id_producto int,
+id_producto int NOT NULL AUTO_INCREMENT ,
 nb_producto int,
 ds_producto int,
 nu_existencia int,

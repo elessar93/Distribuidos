@@ -52,5 +52,17 @@ public class Producto implements Serializable {
 	public void setNu_costo(float nu_costo) {
 		this.nu_costo = nu_costo;
 	}
+	public Producto(int nb_producto, int ds_producto, int nu_existencia, float nu_costo) {
+		this.nb_producto = nb_producto;
+		this.ds_producto = ds_producto;
+		this.nu_existencia = nu_existencia;
+		this.nu_costo = nu_costo;
+	}
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nb_producto=" + nb_producto + ", ds_producto=" + ds_producto
+				+ ", nu_existencia=" + nu_existencia + ", nu_costo=" + nu_costo + "]";
+	}
+	
 
 }
