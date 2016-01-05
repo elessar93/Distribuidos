@@ -4,28 +4,31 @@
 
 <hibernate-configuration>
    <session-factory>
-   <property name="hibernate.dialect">
-      org.hibernate.dialect.MySQLDialect
-   </property>
-   <property name="hibernate.connection.driver_class">
-      com.mysql.jdbc.Driver
-   </property>
+  <!-- Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/distribuidos</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">n0m3l0s3</property>
 
-   <!-- Assume students is the database name -->
-   <property name="hibernate.connection.url">
-      jdbc:mysql://localhost:3306/distribuidos
-   </property>
-   <property name="hibernate.connection.username">
-      root
-   </property>
-   <property name="hibernate.connection.password">
-      n0m3l0s3
-   </property>
-	<property name="hibernate.current_session_context_class">
-		thread
-	</property>
-    <property name="hibernate.connection.pool_size">
-    	1
-    </property>
-</session-factory>
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<!-- <property name="hbm2ddl.auto">create</property> -->
+		
+  		<mapping class="org.rafa.dtd.categoria"></mapping>
+  		<mapping class="org.rafa.dtd.compra"></mapping>
+  		<mapping class="org.rafa.dtd.detalle"></mapping>
+  		<mapping class="org.rafa.dtd.unidad"></mapping>
+  		<mapping class="org.rafa.dtd.usuario"></mapping>
+  		<mapping class="org.rafa.dtd.producto"></mapping>
+  		<mapping class="org.rafa.dtd.atributo"></mapping>
+		
+	</session-factory>
 </hibernate-configuration>
