@@ -1,35 +1,54 @@
 package org.rafa.dtd;
 
-import javax.persistence.*;
-import static javax.persistence.GenerationType.AUTO;;
+
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="atributo")
-public class Atributo   {
+@Table(name="atributo"
+    ,catalog="distribuidos"
+)
+public class Atributo  implements java.io.Serializable {
 
-	@Id @GeneratedValue(strategy=AUTO)
-    @Column(name="idAtributo", unique=true, nullable=false)
+
      private Integer idAtributo;
-	
-	@Column(name="nom_atri", length=45)
+     private Unidad unidad;
      private String nomAtri;
-	
-	@Column(name="des_atri", length=45)
      private String desAtri;
-	
-    @Column(name="idTipo", nullable=false)
-     private int idTipo;
+     private Set categorias = new HashSet(0);
+     private Set productoAtributos = new HashSet(0);
 
     public Atributo() {
     }
 
-    public Atributo(String nomAtri, String desAtri, int idTipo) {
+	
+    public Atributo(Unidad unidad) {
+        this.unidad = unidad;
+    }
+    public Atributo(Unidad unidad, String nomAtri, String desAtri, Set categorias, Set productoAtributos) {
+       this.unidad = unidad;
        this.nomAtri = nomAtri;
        this.desAtri = desAtri;
-       this.idTipo = idTipo;
+       this.categorias = categorias;
+       this.productoAtributos = productoAtributos;
     }
    
+     @Id @GeneratedValue(strategy=IDENTITY)
+
     
+    @Column(name="idAtributo", unique=true, nullable=false)
     public Integer getIdAtributo() {
         return this.idAtributo;
     }
@@ -38,6 +57,20 @@ public class Atributo   {
         this.idAtributo = idAtributo;
     }
 
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumns( { 
+        @JoinColumn(name="idUnidad", referencedColumnName="idUnidad", nullable=false), 
+        @JoinColumn(name="idTipo", referencedColumnName="idTipo", nullable=false) } )
+    public Unidad getUnidad() {
+        return this.unidad;
+    }
+    
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
+
+    
+    @Column(name="nom_atri", length=50)
     public String getNomAtri() {
         return this.nomAtri;
     }
@@ -46,6 +79,8 @@ public class Atributo   {
         this.nomAtri = nomAtri;
     }
 
+    
+    @Column(name="des_atri", length=250)
     public String getDesAtri() {
         return this.desAtri;
     }
@@ -54,13 +89,27 @@ public class Atributo   {
         this.desAtri = desAtri;
     }
 
-    public int getIdTipo() {
-        return this.idTipo;
+@ManyToMany(fetch=FetchType.LAZY, mappedBy="atributos")
+    public Set getCategorias() {
+        return this.categorias;
     }
     
-    public void setIdTipo(int idTipo) {
-        this.idTipo = idTipo;
+    public void setCategorias(Set categorias) {
+        this.categorias = categorias;
     }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="atributo")
+    public Set getProductoAtributos() {
+        return this.productoAtributos;
+    }
+    
+    public void setProductoAtributos(Set productoAtributos) {
+        this.productoAtributos = productoAtributos;
+    }
+
+
 
 
 }
+
+
