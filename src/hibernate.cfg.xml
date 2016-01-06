@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration SYSTEM 
-"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+"http://www.hibernate.org/org.rafa.dtd/hibernate-configuration-3.0.org.rafa.dtd">
 
 <hibernate-configuration>
    <session-factory>
@@ -21,14 +21,18 @@
 		<property name="show_sql">true</property>
 		<!-- Drop and re-create the database schema on startup -->
 		<!-- <property name="hbm2ddl.auto">create</property> -->
-		
-  		<mapping class="org.rafa.dtd.categoria"></mapping>
-  		<mapping class="org.rafa.dtd.compra"></mapping>
-  		<mapping class="org.rafa.dtd.detalle"></mapping>
-  		<mapping class="org.rafa.dtd.unidad"></mapping>
-  		<mapping class="org.rafa.dtd.usuario"></mapping>
-  		<mapping class="org.rafa.dtd.producto"></mapping>
-  		<mapping class="org.rafa.dtd.atributo"></mapping>
-		
+		<mapping class="org.rafa.dtd.Atributo"/>
+	    <mapping class="org.rafa.dtd.ProductoAtributo"/>
+	    <mapping class="org.rafa.dtd.TipoUnidad"/>
+	    <mapping class="org.rafa.dtd.Usuario"/>
+	    <mapping class="org.rafa.dtd.Detalle"/>
+	    <mapping class="org.rafa.dtd.Compra"/>
+	    <mapping class="org.rafa.dtd.Unidad"/>
+	    <mapping class="org.rafa.dtd.EstatusCompra"/>
+	    <mapping class="org.rafa.dtd.Producto"/>
+	    <mapping class="org.rafa.dtd.Categoria"/>
+	    <mapping class="org.rafa.dtd.DetalleId"/>
+	    <mapping class="org.rafa.dtd.UnidadId"/>
+	    <mapping class="org.rafa.dtd.ProductoAtributoId"/>
 	</session-factory>
 </hibernate-configuration>
