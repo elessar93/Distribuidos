@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="categoria"
     ,catalog="distribuidos"
@@ -33,10 +32,6 @@ public class Categoria  implements java.io.Serializable {
     public Categoria() {
     }
 
-	
-    public Categoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
     public Categoria(Categoria categoria, String nomCat, String desCat, Set<Atributo> atributos, Set<Categoria> categorias, Set<Producto> productos) {
        this.categoria = categoria;
        this.nomCat = nomCat;
@@ -46,7 +41,20 @@ public class Categoria  implements java.io.Serializable {
        this.productos = productos;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     public Categoria(String nomCat, String desCat) {
+		this.nomCat = nomCat;
+		this.desCat = desCat;
+	}
+     
+
+     
+	public Categoria(Categoria categoria, String nomCat, String desCat) {
+		this.categoria = categoria;
+		this.nomCat = nomCat;
+		this.desCat = desCat;
+	}
+
+	@Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idCategoria", unique=true, nullable=false)
@@ -59,7 +67,7 @@ public class Categoria  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idPadre", nullable=false)
+    @JoinColumn(name="idPadre")
     public Categoria getCategoria() {
         return this.categoria;
     }
@@ -125,5 +133,4 @@ public class Categoria  implements java.io.Serializable {
 
 
 }
-
 
