@@ -23,14 +23,14 @@ public class Producto  implements java.io.Serializable {
      private String desProd;
      private Integer nuExistencia;
      private Float nuCosto;
-     private Set categorias = new HashSet(0);
-     private Set productoAtributos = new HashSet(0);
-     private Set detalles = new HashSet(0);
+     private Set<Categoria> categorias = new HashSet<Categoria>(0);
+     private Set<ProductoAtributo> productoAtributos = new HashSet<ProductoAtributo>(0);
+     private Set<Detalle> detalles = new HashSet<Detalle>(0);
 
     public Producto() {
     }
 
-    public Producto(String nomProd, String desProd, Integer nuExistencia, Float nuCosto, Set categorias, Set productoAtributos, Set detalles) {
+    public Producto(String nomProd, String desProd, Integer nuExistencia, Float nuCosto, Set<Categoria> categorias, Set<ProductoAtributo> productoAtributos, Set<Detalle> detalles) {
        this.nomProd = nomProd;
        this.desProd = desProd;
        this.nuExistencia = nuExistencia;
@@ -93,29 +93,29 @@ public class Producto  implements java.io.Serializable {
     }
 
 @ManyToMany(fetch=FetchType.LAZY, mappedBy="productos")
-    public Set getCategorias() {
+    public Set<Categoria> getCategorias() {
         return this.categorias;
     }
     
-    public void setCategorias(Set categorias) {
+    public void setCategorias(Set<Categoria> categorias) {
         this.categorias = categorias;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="producto")
-    public Set getProductoAtributos() {
+    public Set<ProductoAtributo> getProductoAtributos() {
         return this.productoAtributos;
     }
     
-    public void setProductoAtributos(Set productoAtributos) {
+    public void setProductoAtributos(Set<ProductoAtributo> productoAtributos) {
         this.productoAtributos = productoAtributos;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="producto")
-    public Set getDetalles() {
+    public Set<Detalle> getDetalles() {
         return this.detalles;
     }
     
-    public void setDetalles(Set detalles) {
+    public void setDetalles(Set<Detalle> detalles) {
         this.detalles = detalles;
     }
 

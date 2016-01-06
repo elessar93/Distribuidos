@@ -1,5 +1,4 @@
 package org.rafa.dtd;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;

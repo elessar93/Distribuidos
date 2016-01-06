@@ -22,7 +22,7 @@ public class Usuario  implements java.io.Serializable {
      private String password;
      private int role;
      private String appUser;
-     private Set compras = new HashSet(0);
+     private Set<Compra> compras = new HashSet<Compra>(0);
 
     public Usuario() {
     }
@@ -33,7 +33,7 @@ public class Usuario  implements java.io.Serializable {
         this.password = password;
         this.role = role;
     }
-    public Usuario(String nomUser, String password, int role, String appUser, Set compras) {
+    public Usuario(String nomUser, String password, int role, String appUser, Set<Compra> compras) {
        this.nomUser = nomUser;
        this.password = password;
        this.role = role;
@@ -94,15 +94,18 @@ public class Usuario  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
-    public Set getCompras() {
+    public Set<Compra> getCompras() {
         return this.compras;
     }
     
-    public void setCompras(Set compras) {
+    public void setCompras(Set<Compra> compras) {
         this.compras = compras;
     }
 
-
+    @Override
+    public String toString() {
+    	return idUser+" "+nomUser+" "+password+" "+role;
+    }
 
 
 }

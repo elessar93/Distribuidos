@@ -18,7 +18,7 @@ public class EstatusCompra  implements java.io.Serializable {
      private int idEstatus;
      private String nbEstatus;
      private String dsEstatus;
-     private Set compras = new HashSet(0);
+     private Set<Compra> compras = new HashSet<Compra>(0);
 
     public EstatusCompra() {
     }
@@ -27,7 +27,7 @@ public class EstatusCompra  implements java.io.Serializable {
     public EstatusCompra(int idEstatus) {
         this.idEstatus = idEstatus;
     }
-    public EstatusCompra(int idEstatus, String nbEstatus, String dsEstatus, Set compras) {
+    public EstatusCompra(int idEstatus, String nbEstatus, String dsEstatus, Set<Compra> compras) {
        this.idEstatus = idEstatus;
        this.nbEstatus = nbEstatus;
        this.dsEstatus = dsEstatus;
@@ -67,11 +67,11 @@ public class EstatusCompra  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="estatusCompra")
-    public Set getCompras() {
+    public Set<Compra> getCompras() {
         return this.compras;
     }
     
-    public void setCompras(Set compras) {
+    public void setCompras(Set<Compra> compras) {
         this.compras = compras;
     }
 

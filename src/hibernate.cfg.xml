@@ -1,38 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-configuration SYSTEM 
-"http://www.hibernate.org/org.rafa.dtd/hibernate-configuration-3.0.org.rafa.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-   <session-factory>
-  <!-- Database connection settings -->
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost/distribuidos</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">n0m3l0s3</property>
-
-		<!-- JDBC connection pool (use the built-in) -->
-		<property name="connection.pool_size">1</property>
-		<property name="hibernate.current_session_context_class">thread</property>
-
-		<!-- SQL dialect -->
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-
-		<!-- Echo all executed SQL to stdout -->
-		<property name="show_sql">true</property>
-		<!-- Drop and re-create the database schema on startup -->
-		<!-- <property name="hbm2ddl.auto">create</property> -->
-		<mapping class="org.rafa.dtd.Atributo"/>
-	    <mapping class="org.rafa.dtd.ProductoAtributo"/>
-	    <mapping class="org.rafa.dtd.TipoUnidad"/>
-	    <mapping class="org.rafa.dtd.Usuario"/>
-	    <mapping class="org.rafa.dtd.Detalle"/>
-	    <mapping class="org.rafa.dtd.Compra"/>
-	    <mapping class="org.rafa.dtd.Unidad"/>
-	    <mapping class="org.rafa.dtd.EstatusCompra"/>
-	    <mapping class="org.rafa.dtd.Producto"/>
-	    <mapping class="org.rafa.dtd.Categoria"/>
-	    <mapping class="org.rafa.dtd.DetalleId"/>
-	    <mapping class="org.rafa.dtd.UnidadId"/>
-	    <mapping class="org.rafa.dtd.ProductoAtributoId"/>
-	</session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/distribuidos</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">n0m3l0s3</property>
+    <mapping class="org.rafa.dtd.Atributo"/>
+    <mapping class="org.rafa.dtd.ProductoAtributo"/>
+    <mapping class="org.rafa.dtd.TipoUnidad"/>
+    <mapping class="org.rafa.dtd.Usuario"/>
+    <mapping class="org.rafa.dtd.Detalle"/>
+    <mapping class="org.rafa.dtd.Compra"/>
+    <mapping class="org.rafa.dtd.Unidad"/>
+    <mapping class="org.rafa.dtd.EstatusCompra"/>
+    <mapping class="org.rafa.dtd.Producto"/>
+    <mapping class="org.rafa.dtd.Categoria"/>
+    <mapping class="org.rafa.dtd.DetalleId"/>
+    <mapping class="org.rafa.dtd.UnidadId"/>
+    <mapping class="org.rafa.dtd.ProductoAtributoId"/>
+  </session-factory>
 </hibernate-configuration>

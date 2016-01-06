@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="tipo_unidad"
     ,catalog="distribuidos"
@@ -20,12 +21,12 @@ public class TipoUnidad  implements java.io.Serializable {
      private Integer idTipo;
      private String nomTipo;
      private String desTipo;
-     private Set unidads = new HashSet(0);
+     private Set<Unidad> unidads = new HashSet<Unidad>(0);
 
     public TipoUnidad() {
     }
 
-    public TipoUnidad(String nomTipo, String desTipo, Set unidads) {
+    public TipoUnidad(String nomTipo, String desTipo, Set<Unidad> unidads) {
        this.nomTipo = nomTipo;
        this.desTipo = desTipo;
        this.unidads = unidads;
@@ -64,11 +65,11 @@ public class TipoUnidad  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="tipoUnidad")
-    public Set getUnidads() {
+    public Set<Unidad> getUnidads() {
         return this.unidads;
     }
     
-    public void setUnidads(Set unidads) {
+    public void setUnidads(Set<Unidad> unidads) {
         this.unidads = unidads;
     }
 
