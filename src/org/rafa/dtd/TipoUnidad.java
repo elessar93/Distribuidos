@@ -25,8 +25,13 @@ public class TipoUnidad  implements java.io.Serializable {
 
     public TipoUnidad() {
     }
+    
+    public TipoUnidad(String nomTipo, String desTipo) {
+		this.nomTipo = nomTipo;
+		this.desTipo = desTipo;
+	}
 
-    public TipoUnidad(String nomTipo, String desTipo, Set<Unidad> unidads) {
+	public TipoUnidad(String nomTipo, String desTipo, Set<Unidad> unidads) {
        this.nomTipo = nomTipo;
        this.desTipo = desTipo;
        this.unidads = unidads;
@@ -73,7 +78,10 @@ public class TipoUnidad  implements java.io.Serializable {
         this.unidads = unidads;
     }
 
-
+    @Override
+    public String toString() {
+    	return idTipo+" "+nomTipo+" "+desTipo;
+    }
 
 
 }

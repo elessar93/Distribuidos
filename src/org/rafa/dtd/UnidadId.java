@@ -56,7 +56,10 @@ public class UnidadId  implements java.io.Serializable {
          result = 37 * result + this.getIdTipo();
          return result;
    }   
-
+	@Override
+	public String toString() {
+		return idUnidad+" "+idTipo;
+	}
 
 }
 

@@ -40,8 +40,19 @@ public class Unidad  implements java.io.Serializable {
        this.txSiglas = txSiglas;
        this.atributos = atributos;
     }
-   
-     @EmbeddedId
+    
+
+
+	public Unidad(UnidadId id, TipoUnidad tipoUnidad, String nomUni, String txSiglas) {
+		super();
+		this.id = id;
+		this.tipoUnidad = tipoUnidad;
+		this.nomUni = nomUni;
+		this.txSiglas = txSiglas;
+	}
+
+
+	@EmbeddedId
 
     
     @AttributeOverrides( {
@@ -94,7 +105,12 @@ public class Unidad  implements java.io.Serializable {
         this.atributos = atributos;
     }
 
-
+    @Override
+    public String toString() {
+    	if(id!=null)
+    	return id.toString()+" "+nomUni+" "+txSiglas;
+    	return super.toString();
+    }
 
 
 }

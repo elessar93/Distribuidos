@@ -1,7 +1,11 @@
 package org.rafa.dao;
 
-import org.hibernate.Hibernate;
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.rafa.dtd.Categoria;
 import org.rafa.dtd.Producto;
 
 public class DAOProducto {
@@ -25,10 +29,16 @@ public class DAOProducto {
 		session.update(p);
 		session.getTransaction().commit();
 	}
-	public Producto produtoById8(int id){
+	public Producto produtoById(int id){
 		Producto p=null;
 		session.beginTransaction();
 		p=(Producto)session.get(Producto.class, id);
 		return p;
+	}
+	public List<Categoria> prodctosByCategoria(Categoria categoria){
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Producto.class);
+		criteria.add(Restrictions.eq("categorias", categoria));
+		return criteria.list();
 	}
 }
