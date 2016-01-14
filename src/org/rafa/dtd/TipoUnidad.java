@@ -1,6 +1,4 @@
 package org.rafa.dtd;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +19,6 @@ public class TipoUnidad  implements java.io.Serializable {
      private Integer idTipo;
      private String nomTipo;
      private String desTipo;
-     private Set<Unidad> unidads = new HashSet<Unidad>(0);
 
     public TipoUnidad() {
     }
@@ -29,14 +26,7 @@ public class TipoUnidad  implements java.io.Serializable {
     public TipoUnidad(String nomTipo, String desTipo) {
 		this.nomTipo = nomTipo;
 		this.desTipo = desTipo;
-	}
-
-	public TipoUnidad(String nomTipo, String desTipo, Set<Unidad> unidads) {
-       this.nomTipo = nomTipo;
-       this.desTipo = desTipo;
-       this.unidads = unidads;
-    }
-   
+	}   
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
@@ -67,15 +57,6 @@ public class TipoUnidad  implements java.io.Serializable {
     
     public void setDesTipo(String desTipo) {
         this.desTipo = desTipo;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tipoUnidad")
-    public Set<Unidad> getUnidads() {
-        return this.unidads;
-    }
-    
-    public void setUnidads(Set<Unidad> unidads) {
-        this.unidads = unidads;
     }
 
     @Override

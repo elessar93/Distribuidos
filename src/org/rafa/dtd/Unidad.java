@@ -1,6 +1,4 @@
 package org.rafa.dtd;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -23,7 +21,6 @@ public class Unidad  implements java.io.Serializable {
      private TipoUnidad tipoUnidad;
      private String nomUni;
      private String txSiglas;
-     private Set<Atributo> atributos = new HashSet<Atributo>(0);
 
     public Unidad() {
     }
@@ -33,24 +30,12 @@ public class Unidad  implements java.io.Serializable {
         this.id = id;
         this.tipoUnidad = tipoUnidad;
     }
-    public Unidad(UnidadId id, TipoUnidad tipoUnidad, String nomUni, String txSiglas, Set<Atributo> atributos) {
+    public Unidad(UnidadId id, TipoUnidad tipoUnidad, String nomUni, String txSiglas) {
        this.id = id;
        this.tipoUnidad = tipoUnidad;
        this.nomUni = nomUni;
        this.txSiglas = txSiglas;
-       this.atributos = atributos;
     }
-    
-
-
-	public Unidad(UnidadId id, TipoUnidad tipoUnidad, String nomUni, String txSiglas) {
-		super();
-		this.id = id;
-		this.tipoUnidad = tipoUnidad;
-		this.nomUni = nomUni;
-		this.txSiglas = txSiglas;
-	}
-
 
 	@EmbeddedId
 
@@ -95,16 +80,6 @@ public class Unidad  implements java.io.Serializable {
     public void setTxSiglas(String txSiglas) {
         this.txSiglas = txSiglas;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="unidad")
-    public Set<Atributo> getAtributos() {
-        return this.atributos;
-    }
-    
-    public void setAtributos(Set<Atributo> atributos) {
-        this.atributos = atributos;
-    }
-
     @Override
     public String toString() {
     	if(id!=null)

@@ -1,7 +1,5 @@
 package org.rafa.dtd;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,8 +25,7 @@ public class Compra  implements java.io.Serializable {
      private Usuario usuario;
      private Date fhInicio;
      private Date fhFin;
-     private Set<Detalle> detalles = new HashSet<Detalle>(0);
-
+    
     public Compra() {
     }
 
@@ -37,17 +34,15 @@ public class Compra  implements java.io.Serializable {
         this.estatusCompra = estatusCompra;
         this.usuario = usuario;
     }
-    public Compra(EstatusCompra estatusCompra, Usuario usuario, Date fhInicio, Date fhFin, Set<Detalle> detalles) {
+    public Compra(EstatusCompra estatusCompra, Usuario usuario, Date fhInicio, Date fhFin) {
        this.estatusCompra = estatusCompra;
        this.usuario = usuario;
        this.fhInicio = fhInicio;
        this.fhFin = fhFin;
-       this.detalles = detalles;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
-
-    
+   
     @Column(name="idCompra", unique=true, nullable=false)
     public Integer getIdCompra() {
         return this.idCompra;
@@ -96,19 +91,6 @@ public class Compra  implements java.io.Serializable {
     public void setFhFin(Date fhFin) {
         this.fhFin = fhFin;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="compra")
-    public Set<Detalle> getDetalles() {
-        return this.detalles;
-    }
-    
-    public void setDetalles(Set<Detalle> detalles) {
-        this.detalles = detalles;
-    }
-
-
-
-
 }
 
 

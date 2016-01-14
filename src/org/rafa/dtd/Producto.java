@@ -23,21 +23,15 @@ public class Producto  implements java.io.Serializable {
      private String desProd;
      private Integer nuExistencia;
      private Float nuCosto;
-     private Set<Categoria> categorias = new HashSet<Categoria>(0);
-     private Set<ProductoAtributo> productoAtributos = new HashSet<ProductoAtributo>(0);
-     private Set<Detalle> detalles = new HashSet<Detalle>(0);
 
     public Producto() {
     }
 
-    public Producto(String nomProd, String desProd, Integer nuExistencia, Float nuCosto, Set<Categoria> categorias, Set<ProductoAtributo> productoAtributos, Set<Detalle> detalles) {
+    public Producto(String nomProd, String desProd, Integer nuExistencia, Float nuCosto) {
        this.nomProd = nomProd;
        this.desProd = desProd;
        this.nuExistencia = nuExistencia;
        this.nuCosto = nuCosto;
-       this.categorias = categorias;
-       this.productoAtributos = productoAtributos;
-       this.detalles = detalles;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -91,36 +85,6 @@ public class Producto  implements java.io.Serializable {
     public void setNuCosto(Float nuCosto) {
         this.nuCosto = nuCosto;
     }
-
-@ManyToMany(fetch=FetchType.LAZY, mappedBy="productos")
-    public Set<Categoria> getCategorias() {
-        return this.categorias;
-    }
-    
-    public void setCategorias(Set<Categoria> categorias) {
-        this.categorias = categorias;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="producto")
-    public Set<ProductoAtributo> getProductoAtributos() {
-        return this.productoAtributos;
-    }
-    
-    public void setProductoAtributos(Set<ProductoAtributo> productoAtributos) {
-        this.productoAtributos = productoAtributos;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="producto")
-    public Set<Detalle> getDetalles() {
-        return this.detalles;
-    }
-    
-    public void setDetalles(Set<Detalle> detalles) {
-        this.detalles = detalles;
-    }
-
-
-
 
 }
 

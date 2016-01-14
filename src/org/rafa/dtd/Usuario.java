@@ -1,6 +1,5 @@
 package org.rafa.dtd;
-import java.util.HashSet;
-import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,15 +13,18 @@ import javax.persistence.Table;
 @Table(name="usuario"
     ,catalog="distribuidos"
 )
-public class Usuario  implements java.io.Serializable {
+public class Usuario implements java.io.Serializable  {
+	
 
-
-     private Integer idUser;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 268403179372724230L;
+	private Integer idUser;
      private String nomUser;
      private String password;
      private int role;
      private String appUser;
-     private Set<Compra> compras = new HashSet<Compra>(0);
 
     public Usuario() {
     }
@@ -33,12 +35,11 @@ public class Usuario  implements java.io.Serializable {
         this.password = password;
         this.role = role;
     }
-    public Usuario(String nomUser, String password, int role, String appUser, Set<Compra> compras) {
+    public Usuario(String nomUser, String password, int role, String appUser) {
        this.nomUser = nomUser;
        this.password = password;
        this.role = role;
        this.appUser = appUser;
-       this.compras = compras;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -91,15 +92,6 @@ public class Usuario  implements java.io.Serializable {
     
     public void setAppUser(String appUser) {
         this.appUser = appUser;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
-    public Set<Compra> getCompras() {
-        return this.compras;
-    }
-    
-    public void setCompras(Set<Compra> compras) {
-        this.compras = compras;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package org.rafa.dtd;
-import java.util.HashSet;
-import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,8 +24,6 @@ public class Atributo  implements java.io.Serializable {
      private Unidad unidad;
      private String nomAtri;
      private String desAtri;
-     private Set<Categoria> categorias = new HashSet<Categoria>(0);
-     private Set<ProductoAtributo> productoAtributos = new HashSet<ProductoAtributo>(0);
 
     public Atributo() {
     }
@@ -35,12 +32,11 @@ public class Atributo  implements java.io.Serializable {
     public Atributo(Unidad unidad) {
         this.unidad = unidad;
     }
-    public Atributo(Unidad unidad, String nomAtri, String desAtri, Set<Categoria> categorias, Set<ProductoAtributo> productoAtributos) {
+    public Atributo(Unidad unidad, String nomAtri, String desAtri) {
        this.unidad = unidad;
        this.nomAtri = nomAtri;
        this.desAtri = desAtri;
-       this.categorias = categorias;
-       this.productoAtributos = productoAtributos;
+
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -86,27 +82,6 @@ public class Atributo  implements java.io.Serializable {
     public void setDesAtri(String desAtri) {
         this.desAtri = desAtri;
     }
-
-@ManyToMany(fetch=FetchType.LAZY, mappedBy="atributos")
-    public Set<Categoria> getCategorias() {
-        return this.categorias;
-    }
-    
-    public void setCategorias(Set<Categoria> categorias) {
-        this.categorias = categorias;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="atributo")
-    public Set<ProductoAtributo> getProductoAtributos() {
-        return this.productoAtributos;
-    }
-    
-    public void setProductoAtributos(Set<ProductoAtributo> productoAtributos) {
-        this.productoAtributos = productoAtributos;
-    }
-
-
-
 
 }
 

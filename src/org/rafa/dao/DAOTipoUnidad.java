@@ -3,6 +3,7 @@ package org.rafa.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.rafa.dtd.Producto;
 import org.rafa.dtd.TipoUnidad;
 
 public class DAOTipoUnidad {
@@ -21,5 +22,10 @@ public class DAOTipoUnidad {
 	}
 	public List<TipoUnidad> getAll(){
 		return session.createCriteria(TipoUnidad.class).list();
+	}
+	public void update(TipoUnidad tu){
+		session.beginTransaction();
+		session.update(tu);
+		session.getTransaction().commit();
 	}
 }

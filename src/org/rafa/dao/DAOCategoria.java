@@ -4,12 +4,18 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.rafa.dtd.Categoria;
+import org.rafa.dtd.Producto;
 import org.rafa.dtd.Unidad;
 
 public class DAOCategoria {
 	Session session = null;
 	public DAOCategoria() {
 		this.session = HibernateUtil.getSessionFactory().openSession();
+	}
+	public void update(Categoria c){
+		session.beginTransaction();
+		session.update(c);
+		session.getTransaction().commit();
 	}
 	public void alta (Categoria c){
 		session.beginTransaction();

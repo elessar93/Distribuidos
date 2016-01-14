@@ -1,6 +1,4 @@
 package org.rafa.dtd;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +16,6 @@ public class EstatusCompra  implements java.io.Serializable {
      private int idEstatus;
      private String nbEstatus;
      private String dsEstatus;
-     private Set<Compra> compras = new HashSet<Compra>(0);
 
     public EstatusCompra() {
     }
@@ -27,11 +24,11 @@ public class EstatusCompra  implements java.io.Serializable {
     public EstatusCompra(int idEstatus) {
         this.idEstatus = idEstatus;
     }
-    public EstatusCompra(int idEstatus, String nbEstatus, String dsEstatus, Set<Compra> compras) {
+    public EstatusCompra(int idEstatus, String nbEstatus, String dsEstatus) {
        this.idEstatus = idEstatus;
        this.nbEstatus = nbEstatus;
        this.dsEstatus = dsEstatus;
-       this.compras = compras;
+
     }
    
      @Id 
@@ -65,17 +62,6 @@ public class EstatusCompra  implements java.io.Serializable {
     public void setDsEstatus(String dsEstatus) {
         this.dsEstatus = dsEstatus;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="estatusCompra")
-    public Set<Compra> getCompras() {
-        return this.compras;
-    }
-    
-    public void setCompras(Set<Compra> compras) {
-        this.compras = compras;
-    }
-
-
 
 
 }
