@@ -36,4 +36,9 @@ public class DAODetalle {
 		criteria.add(Restrictions.eq("producto",p));
 		return (Detalle) criteria.uniqueResult();
 	}
+	public void eliminar(Detalle d){
+		session.beginTransaction();
+		session.delete(d);
+		session.getTransaction().commit();
+	}
 }
